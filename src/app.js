@@ -9,16 +9,14 @@ function copyFile() {
   const fileCopy = process.argv[3];
 
   if (!file || !fileCopy) {
-    console.error('Not enough arguments');
-
-    return;
+    return console.error('Not enough arguments');
   }
 
   const resolvedFile = path.resolve(file);
   const resolvedFileCopy = path.resolve(fileCopy);
 
   if (resolvedFile === resolvedFileCopy) {
-    return;
+    return console.error('Source and destination cannot be the same');
   }
 
   fs.copyFile(file, fileCopy, (err) => {
